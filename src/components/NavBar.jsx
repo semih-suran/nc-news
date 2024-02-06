@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const NavBar = () => {
-  const [showArticles, setShowArticles] = useState(false);
-
-  const handleClick = () => {
-    setShowArticles(!showArticles);
-  };
-
+const NavBar = ({ handleHomeClick, handleArticlesClick }) => {
   return (
     <nav className="nav-bar">
-      <button>Home</button>
-      <button onClick={handleClick}>Articles</button>
-      {showArticles}
+      <Link to="/" onClick={handleHomeClick}>Home</Link>
+      <Link to="/articles" onClick={handleArticlesClick}>Articles</Link>
     </nav>
   );
 };

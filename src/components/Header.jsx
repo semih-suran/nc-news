@@ -3,9 +3,9 @@ const Header = () => {
     <header className="header">
 
     <h1 className="nc-news-header">
-      <span id="NC">NC</span> News
+      <span className="NC">NC</span> News
     </h1>
-    <button className="sign-in-btn">Sign In</button>
+    <button className="sign-in-btn">User</button>
     </header>
   );
 };
