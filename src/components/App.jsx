@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import "../App.css";
+import Body from "./Body";
 
 function App() {
-  return <>
-  <h1>Hi from App.jsx</h1>
-  </>
+  return (
+    <>
+      <Body></Body>
+    </>
+  );
 }
 
 export default App;

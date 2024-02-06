@@ -1,0 +1,168 @@
+#NC {
+  color: red;
+}
+
+button {
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#root {
+  display: grid;
+  grid-template-columns: repeat(16, 30px);
+  grid-template-rows: repeat(36, 30px);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.articles-div {
+  padding-top: 20px;
+  grid-area: 4 / 1 / -1 / -1;
+  margin: 20px;
+}
+
+.articles-div h2 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+.articles-div ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.articles-div li {
+  padding: 2px;
+}
+
+.articles-div button {
+  width: 360px;
+  height: 250px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.articles-div h3 {
+  font-size: 18px;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.articles-div img {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+.users {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 10px;
+  background-color: #8a0000;
+  border: 2px solid #000000;
+  border-radius: 8px;
+}
+
+.users button {
+  width: 180px;
+  height: 40px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid;
+  border-radius: 8px;
+}
+
+.users button:hover {
+  box-shadow: 0 0 10px 3px rgb(255, 255, 255);
+}
+
+.user {
+  display: flex;
+  margin: 5px;
+  font-size: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background-color: #8a0000;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  margin-top: 10px;
+  padding: 0px 0px 0px 0px;
+}
+
+.nav-bar button:hover {
+  box-shadow: 0 0 10px 3px rgb(255, 255, 255);
+}
+.nav-bar button {
+  margin: 10px;
+}
+
+.header {
+  position: fixed;
+  top: 0px;
+  left: 5px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.header button {
+  margin: 15px;
+}
+
+.sign-in-btn:hover {
+  box-shadow: 0 0 10px 3px rgb(0, 0, 0);
+}
+
+.users img {
+  max-width: 30px;
+  max-height: 30px;
+  padding-right: 10px;
+}
+
+.topic-photos {
+  grid-area: 8 / 1 / 32 / -1;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.topic-photos img {
+  max-width: 250px;
+  height: auto;
+  display: block;
+  border-radius: 8%;
+}
+.topic-photos button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
