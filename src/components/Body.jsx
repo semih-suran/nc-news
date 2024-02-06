@@ -1,38 +1,50 @@
+import React, { useState } from "react";
 import Header from "./Header";
 import NavBar from "./NavBar";
-import Users from "./Users";
-import AllArticles from "./Articles";
+import ArticleCard from "../routes/ArticleCard";
+import PostComment from "../routes/PostComment";
+import Users from "../routes/Users";
 
 function Body() {
+  const [showArticles, setShowArticles] = useState(false);
+  const [isHomeImagesVisible, setIsHomeImagesVisible] = useState(false);
+  const [selectedArticle, setSelectedArticle] = useState(false);
+
+  const handleArticlesClick = () => {
+    setShowArticles(true);
+    setIsHomeImagesVisible(false);
+    setSelectedArticle(false);
+  };
+
+  const handleHomeClick = () => {
+    setShowArticles(false);
+    setIsHomeImagesVisible(true);
+    setSelectedArticle(false);
+  };
+
+  const handleArticleIdClick = () => {
+    setIsHomeImagesVisible(false);
+    setShowArticles(false);
+    setSelectedArticle(true);
+  };
   return (
     <>
-      <Header></Header>
-      <NavBar></NavBar>
-      {/* <div className="topic-photos">
-        <button>Cooking Articles
-          <img
-            className="cooking-photo"
-            src="https://img.jakpost.net/c/2018/06/27/2018_06_27_48298_1530062479._large.jpg"
-            alt="a chopping board with some ingredients around it"
-          />
-        </button>
-        <button>Coding Articles
-          <img
-            className="coding-photo"
-            src="https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg"
-            alt="some complicated code on a screen"
-          />
-        </button>
-        <button>Football Articles
-          <img
-            className="football-photo"
-            src="https://cdn.britannica.com/51/190751-050-147B93F7/soccer-ball-goal.jpg"
-            alt="a football touching the net"
-          />
-        </button>
-      </div> */}
-      <AllArticles></AllArticles>
-      {/* <Users></Users>  */}
+      <Header />
+      <NavBar
+        handleHomeClick={handleHomeClick}
+        handleArticlesClick={handleArticlesClick}
+        showArticles={showArticles}
+        isHomeImagesVisible={isHomeImagesVisible}
+      />
+      {selectedArticle && (
+        <ArticleCard
+          handleArticleIdClick={handleArticleIdClick}
+          selectedArticle={selectedArticle}
+        />
+      )}
+
+      {/* <PostComment></PostComment> */}
+      {/* <Users></Users> */}
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import getAllUsers from "../utils/api";
+import { getAllUsers } from "../utils/api";
 
 let userData = {};
 
