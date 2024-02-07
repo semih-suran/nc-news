@@ -22,11 +22,6 @@ function Body() {
     setSelectedArticle(false);
   };
 
-  const handleArticleIdClick = () => {
-    setIsHomeImagesVisible(false);
-    setShowArticles(false);
-    setSelectedArticle(true);
-  };
   return (
     <>
       <Header />
@@ -35,14 +30,16 @@ function Body() {
         handleArticlesClick={handleArticlesClick}
         showArticles={showArticles}
         isHomeImagesVisible={isHomeImagesVisible}
+        selectedArticle={selectedArticle}
       />
       {selectedArticle && (
         <ArticleCard
-          handleArticleIdClick={handleArticleIdClick}
+          handleArticlesClick={handleArticlesClick}
+          showArticles={showArticles}
+          isHomeImagesVisible={isHomeImagesVisible}
           selectedArticle={selectedArticle}
         />
       )}
-
       {/* <PostComment></PostComment> */}
       {/* <Users></Users> */}
     </>

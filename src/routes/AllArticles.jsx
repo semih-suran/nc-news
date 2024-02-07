@@ -29,9 +29,12 @@ const AllArticles = () => {
   };
 
   return (
-    <div className="articles-div">
+    <div className="articles-div" id="allArticlesBox">
       {clickedArticleId ? (
-        <ArticleCard handleBackToArticles={handleBackToArticles} />
+        <ArticleCard
+          handleBackToArticles={handleBackToArticles}
+          clickedArticleId={clickedArticleId}
+        />
       ) : (
         <>
           <h2>Click on desired article for details</h2>
@@ -46,7 +49,7 @@ const AllArticles = () => {
                   to={`/articles/${article.article_id}`}
                   key={article.article_id}
                 >
-                  <button>
+                  <button className="each-article-in-list">
                     <h3>{article.title}</h3>
                     <p>by {article.author}</p>
                     <img src={article.article_img_url} alt="article image" />
