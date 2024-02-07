@@ -23,8 +23,10 @@ const ArticleCard = () => {
     fetchArticle();
   }, [article_id]);
 
+
+
   const handleBackToArticles = () => {
-    // Implement your logic here to navigate back to all articles
+
   };
 
   return (
@@ -43,6 +45,7 @@ const ArticleCard = () => {
             <img src={article.article_img_url} alt="article image" />
             <p>Article ID: {article.article_id}</p>
             <p>Topic: {article.topic}</p>
+            <p>Article: {article.body}</p>
             <p>Author: {article.author}</p>
             <p>Votes: {article.votes}</p>
             <p>Created At: {article.created_at}</p>
