@@ -3,7 +3,6 @@ $primary-color: #007bff;
 $button-width: 360px;
 $button-height: 250px;
 
-// Base Styles
 .NC {
   color: red;
 }
@@ -17,23 +16,19 @@ button {
   cursor: pointer;
 }
 
-// Layout Styles
 #root {
-  display: grid;
-  grid-template-columns: repeat(16, 30px);
-  grid-template-rows: repeat(36, 30px);
+  min-width: 300px;
 }
 
 body {
   margin: 0;
+  min-width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #303030;
+  background-color: #6eaaea;
 }
 
-// Header Styles
 .header {
   position: fixed;
   top: 0;
@@ -62,7 +57,6 @@ body {
   padding-right: 10px;
 }
 
-// Navigation Styles
 .nav-bar {
   position: fixed;
   top: 50px;
@@ -89,12 +83,23 @@ body {
   border-radius: 8px;
   padding: 3px;
   margin: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
-// Articles Styles
+#allArticlesList {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#allArticlesBox {
+  margin-top: 100px;
+}
+
 .articles-div {
-  padding-top: 60px;
-  grid-area: 6 / 2 / -2 / -1;
   text-align: center;
 
   button {
@@ -108,7 +113,7 @@ body {
   }
 
   h2 {
-    color: #e8df46;
+    color: #000000;
   }
 
   h3 {
@@ -125,9 +130,16 @@ body {
   }
 }
 
-#allArticlesList {
-  padding: 0;
-  margin: 0;
+#article-card {
+  padding-top: 120px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.comments-for-article {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
 }
 
 #back-to-articles {
@@ -138,9 +150,11 @@ body {
   border: 2px solid;
   border-radius: 8px;
   cursor: pointer;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 20px;
 }
 
-// User Styles
 .users {
   position: fixed;
   top: 40%;
@@ -174,22 +188,37 @@ body {
   justify-content: space-between;
 }
 
-// Article Card Styles
-.article-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.6);
-  border: #000000 solid 7px;
-  border-radius: 8px;
-  text-align: center;
-  background-color: #ffffff;
-  height: auto; 
+.comments-for-article {
+  background-color: #f0e96d;
+  button {
+    width: 80px;
+    height: 40px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 3px;
+    margin: 5px;
+  }
 }
 
-// Topic Photos Styles
+#add-comment {
+  width: 200px;
+}
+.each-comment {
+  border: #000000 2px solid;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.comments-for-article {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+
 .topic-photos {
-  grid-area: 8 / 1 / 32 / -1;
+  margin-top: 100px;
   display: grid;
   align-items: center;
   justify-content: center;
