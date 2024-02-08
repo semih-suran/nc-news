@@ -35,13 +35,17 @@ const Comments = () => {
           <h2>Comments</h2>
           {comments.map((comment) => (
             <li className="each-comment" key={comment.comment_id}>
+              <section className="user-in-comments">
               <p>-- maybe -USER AVATAR- here --</p>
               <p>{comment.author}</p>
+              </section>
               <p>{comment.body}</p>
-              <p>Votes: {comment.votes}</p>
-              <button>Vote +</button>
-              <button>Vote -</button>
               <p>{comment.created_at}</p>
+              <p>Votes: {comment.votes}</p>
+              <button>Vote 👍</button>
+              <button>Vote 👎</button>
+              <br />
+              <button id="delete-comment">🚫 Delete Comment 🚫</button>
             </li>
           ))}
         </ul>

@@ -45,7 +45,7 @@ const AllArticles = () => {
           ) : (
             <ul id="allArticlesList">
               {articles.map((article) => (
-                <Link
+                <Link id="each-article"
                   to={`/articles/${article.article_id}`}
                   key={article.article_id}
                 >
