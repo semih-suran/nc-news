@@ -65,3 +65,16 @@ export const getCommentsByArticleId = (articleId) => {
       return err;
     });
 };
+
+export const updateArticleVotes = (articleId, voteValue) => {
+  return axios
+    .patch(`https://thenews-lhhv.onrender.com/api/articles/${articleId}`, {
+      "inc_votes": voteValue
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
