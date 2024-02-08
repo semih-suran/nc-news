@@ -1,49 +1,71 @@
-import React, { useState, useEffect } from "react";
-import { getCommentsByArticleId } from "../utils/api";
+import React, { useState } from "react";
+import { postMyComment } from "../utils/api";
 
-const PostComment = (articleId) => {
-  const [commentInput, setCommentInput] = useState("");
-
-  const [finalNewCommentInput, setFinalNewCommentInput] = useState(false);
+const PostComment = ({ article_id, handleCommentPosted }) => {
+  const [username, setUsername] = useState("happyamy2016");
+  // change username to an non-existent one then try posting for error message
+  const [commentBody, setCommentBody] = useState("");
+  const [isPostingComment, setIsPostingComment] = useState(false);
+  const [showPostComment, setShowPostComment] = useState(false);
 
   const handleNewCommentSubmit = (event) => {
     event.preventDefault();
-    setFinalNewCommentInput({
-      body: commentInput,
-    });
+    if (isPostingComment) return;
+
+    const commentData = {
+      username: username,
+      body: commentBody,
+    };
+
+    const newComment = {
+      comment_id: Date.now(), // optimistic purposes faked
+      author: username,
+      body: commentBody,
+      created_at: new Date().toISOString(),
+      votes: 0,
+    };
+
+    setIsPostingComment(true);
+    handleCommentPosted(newComment);
+
+    postMyComment(article_id, commentData)
+      .then(() => {
+        setIsPostingComment(false);
+        setCommentBody("");
+      })
+      .catch((error) => {
+        setCommentBody("Can not post right now...");
+        setIsPostingComment(false);
+      });
   };
 
-  useEffect(() => {
-    if (finalNewCommentInput) {
-      fetch(getCommentsByArticleId(articleId), {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(finalNewCommentInput),
-      })
-        .then((response) => response.json())
-        .then((msg) => {
-          console.log(msg);
-        });
-    }
-  }, [finalNewCommentInput]);
+  const togglePostComment = () => {
+    setShowPostComment(!showPostComment);
+  };
 
   return (
-    <form className="post-comment-form" onSubmit={handleNewCommentSubmit}>
-      <label htmlFor="new-comment">Write Comment</label>
-      <input
-        type="text"
-        id="new-comment"
-        placeholder="I think..."
-        required
-        value={commentInput}
-        onChange={(event) => {
-          setCommentInput(event.target.value);
-        }}
-      />
-      <button type="submit">Post</button>
-    </form>
+    <>
+      <button id="add-comment" onClick={togglePostComment}>
+        Add a Comment
+      </button>
+      {showPostComment && (
+        <form className="post-comment-form" onSubmit={handleNewCommentSubmit}>
+          <label htmlFor="new-comment">Write Comment: </label>
+          <input
+            type="text"
+            id="new-comment"
+            placeholder="My Comment..."
+            required
+            value={commentBody}
+            onChange={(event) => setCommentBody(event.target.value)}
+            disabled={isPostingComment}
+          />
+          <button type="submit" disabled={isPostingComment}>
+            Post
+          </button>
+        </form>
+      )}
+    </>
   );
 };
 
