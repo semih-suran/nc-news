@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "./Header";
 import NavBar from "./NavBar";
 import ArticleCard from "../routes/ArticleCard";
-import PostComment from "../routes/PostComment";
 import Users from "../routes/Users";
 
 function Body() {
@@ -40,7 +39,6 @@ function Body() {
           selectedArticle={selectedArticle}
         />
       )}
-      {/* <PostComment></PostComment> */}
       {/* <Users></Users> */}
     </>
   );

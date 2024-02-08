@@ -69,8 +69,22 @@ export const getCommentsByArticleId = (articleId) => {
 export const updateArticleVotes = (articleId, voteValue) => {
   return axios
     .patch(`https://thenews-lhhv.onrender.com/api/articles/${articleId}`, {
-      "inc_votes": voteValue
+      inc_votes: voteValue,
     })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export const postMyComment = (articleId, commentBody) => {
+  return axios
+    .post(
+      `https://thenews-lhhv.onrender.com/api/articles/${articleId}/comments`,
+      commentBody
+    )
     .then((response) => {
       return response.data;
     })
