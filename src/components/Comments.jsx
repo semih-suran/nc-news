@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getCommentsByArticleId } from "../utils/api";
 import { useParams } from "react-router-dom";
-import PostComment from "../routes/PostComment"
+import PostComment from "./PostComment"
+import DeleteComment from "./DeleteComment";
 
 const Comments = () => {
   const { article_id } = useParams();
@@ -27,6 +28,10 @@ const Comments = () => {
     fetchComment();
   }, [article_id]);
 
+  const handleDeleteComment = (deletedCommentId) => {
+    setComments(comments.filter((comment) => comment.comment_id !== deletedCommentId));
+  };
+
   return (
     <>
       {isLoading ? (
@@ -50,7 +55,7 @@ const Comments = () => {
               <button>Vote 👍</button>
               <button>Vote 👎</button>
               <br />
-              <button id="delete-comment">🚫 Delete Comment 🚫</button>
+              <DeleteComment commentId={comment.comment_id} onDelete={handleDeleteComment} />
             </li>
           ))}
         </ul>

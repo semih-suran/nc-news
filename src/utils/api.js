@@ -92,3 +92,14 @@ export const postMyComment = (articleId, commentBody) => {
       throw err;
     });
 };
+
+export const deleteCommentsById = (comment_id) => {
+  return axios
+    .delete(`https://thenews-lhhv.onrender.com/api/comments/${comment_id}`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

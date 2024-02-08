@@ -26,15 +26,16 @@ const PostComment = ({ article_id, handleCommentPosted }) => {
     };
 
     setIsPostingComment(true);
-    handleCommentPosted(newComment);
 
     postMyComment(article_id, commentData)
       .then(() => {
         setIsPostingComment(false);
         setCommentBody("");
+        handleCommentPosted(newComment);
       })
       .catch((error) => {
-        setCommentBody("Can not post right now...");
+        alert("Can not post right now...");
+        setCommentBody("");
         setIsPostingComment(false);
       });
   };
@@ -46,22 +47,21 @@ const PostComment = ({ article_id, handleCommentPosted }) => {
   return (
     <>
       <button id="add-comment" onClick={togglePostComment}>
-        Add a Comment
+        Write a Comment ✍🏻
       </button>
       {showPostComment && (
         <form className="post-comment-form" onSubmit={handleNewCommentSubmit}>
-          <label htmlFor="new-comment">Write Comment: </label>
-          <input
-            type="text"
+          <label htmlFor="new-comment"></label>
+          <textarea
             id="new-comment"
             placeholder="My Comment..."
             required
             value={commentBody}
             onChange={(event) => setCommentBody(event.target.value)}
             disabled={isPostingComment}
-          />
-          <button type="submit" disabled={isPostingComment}>
-            Post
+          ></textarea>
+          <button id="post-button" type="submit" disabled={isPostingComment}>
+            Post 📨
           </button>
         </form>
       )}

@@ -6,7 +6,7 @@ import AllArticles from "./routes/AllArticles.jsx";
 import RootLayout from "./routes/RootLayout.jsx";
 import "./styles/index.scss";
 import Users from "./routes/Users.jsx";
-import PostComment from "./routes/PostComment.jsx";
+import PostComment from "./components/PostComment.jsx";
 import ArticleCard from "./routes/ArticleCard.jsx";
 
 const router = createBrowserRouter([
