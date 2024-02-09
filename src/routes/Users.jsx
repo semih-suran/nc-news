@@ -3,7 +3,7 @@ import { getAllUsers } from "../utils/api";
 
 let userData = {};
 
-const Users = () => {
+const Users = ({onToggleUserList}) => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const Users = () => {
           </button>
         );
       })}
+      <button id="cancel-button" className="user" onClick={onToggleUserList}>Cancel</button>
     </ul>
   );
 };

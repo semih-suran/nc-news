@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getArticlesById, updateArticleVotes } from "../utils/api";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Comments from "../components/Comments";
 
 const ArticleCard = ({ handleArticlesClick }) => {
@@ -33,7 +32,7 @@ const ArticleCard = ({ handleArticlesClick }) => {
     }));
 
     updateArticleVotes(article_id, voteValue)
-      // change voteValue to "nonsense" for the error feedback
+      // change | voteValue | to | "nonsense" | for the error feedback
       .then(() => {
         setArticle((prevArticle) => ({
           ...prevArticle,
@@ -77,8 +76,8 @@ const ArticleCard = ({ handleArticlesClick }) => {
           <h2>{article.title}</h2>
           <img src={article.article_img_url} alt="article image" />
           <p>{article.body}</p>
-          <p>Written By: {article.author}</p>
           <p>Category: {article.topic}</p>
+          <p>Written By: {article.author}</p>
           <p>Votes: {article.votes}</p>
           <button
             id="inc-votes"

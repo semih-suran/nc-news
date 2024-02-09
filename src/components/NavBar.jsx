@@ -5,7 +5,7 @@ const NavBar = ({ handleHomeClick, handleArticlesClick }) => {
   return (
     <nav className="nav-bar">
       <Link to="/" onClick={handleHomeClick}>Home</Link>
-      <Link to="/articles" onClick={handleArticlesClick}>Articles</Link>
+      <Link to="/articles" onClick={handleArticlesClick}>All Articles</Link>
     </nav>
   );
 };
