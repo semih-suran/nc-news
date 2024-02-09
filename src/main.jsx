@@ -8,6 +8,7 @@ import "./styles/index.scss";
 import Users from "./routes/Users.jsx";
 import PostComment from "./components/PostComment.jsx";
 import ArticleCard from "./routes/ArticleCard.jsx";
+import ArticlesByTopic from "./routes/ArticlesByTopic.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/articles/:article_id", element: <ArticleCard /> },
       { path: "/users", element: <Users /> },
       { path: "/articles/:article_id/comments", element: <PostComment /> },
+      { path: "/articles", element: <ArticlesByTopic /> },
     ],
   },
 ]);

@@ -3,13 +3,19 @@ $primary-color: #007bff;
 $button-width: 360px;
 $button-height: 250px;
 
+.NC {
+  color: red;
+}
+
 li {
   list-style: none;
+  font-family: "Poppins", sans-serif;
 }
 
 button {
   border-radius: 8px;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 
 #root {
@@ -23,6 +29,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #d1e7fd;
+  font-family: "Poppins", sans-serif;
 }
 
 .header {
@@ -50,8 +57,8 @@ body {
 
 .sign-in-btn {
   background-color: transparent;
-  padding: 15px;
-  border-radius: 50%;
+  padding: 5px;
+  border-radius: 8px;
   &:hover {
     box-shadow: 0 0 10px 3px rgb(0, 0, 0);
   }
@@ -65,7 +72,7 @@ body {
 
 .nav-bar {
   position: fixed;
-  top: 50px;
+  top: 45px;
   left: 0;
   width: 100%;
   background-color: #ffffff;
@@ -100,6 +107,12 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  button {
+    height: 300px;
+  }
+  img {
+    max-width: 240px;
+  }
 }
 
 #allArticlesBox {
@@ -125,6 +138,8 @@ body {
 
   h2 {
     color: #000000;
+    padding-top: 25px;
+    font-size: x-large;
   }
 
   h3 {
@@ -139,6 +154,12 @@ body {
     max-height: 200px;
     border-radius: 8px;
   }
+}
+
+.topic-article-img{
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 8px;
 }
 
 #article-card {
@@ -185,12 +206,19 @@ body {
   position: fixed;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.5);
   margin: 0;
   padding: 10px;
   background-color: #8a0000;
   border: 2px solid #000000;
   border-radius: 8px;
+
+  #cancel-button {
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    color: red;
+  }
 
   button {
     width: 180px;
@@ -247,7 +275,7 @@ body {
   background-color: #fffba8;
   background: linear-gradient(to bottom right, #fffba8, #c6bc03);
   button {
-    width: 60px;
+    width: 75px;
     height: 40px;
     background-color: #000000;
     color: #ffffff;
@@ -268,12 +296,12 @@ body {
 }
 
 #add-comment {
-  width: 200px;
+  width: 220px;
   font-size: 20px;
 }
 
 #delete-comment {
-  width: 160px;
+  width: 180px;
   background-color: #000000;
   &:hover {
     box-shadow: 0 0 10px 3px red;
@@ -285,20 +313,15 @@ body {
   border-radius: 8px;
 }
 
-.comments-for-article {
-  margin-top: 20px;
-  padding: 20px;
-  border-top: 1px solid #ccc;
-}
-
 .topic-photos {
-  margin-top: 100px;
   display: grid;
   align-items: center;
+  text-align: center;
   justify-content: center;
 
+
   img {
-    max-width: 250px;
+    max-width: 300px;
     height: auto;
     display: block;
     border-radius: 8%;
@@ -309,5 +332,15 @@ body {
     border: none;
     padding: 0;
     margin: 0;
+    font-size: larger;
+    margin-top: 20px;
   }
+}
+.home-title {
+  margin-top: 110px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-size: xx-large;
+  margin-bottom: 0;
 }

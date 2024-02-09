@@ -1,5 +1,11 @@
 import axios from "axios";
 
+const API_BASE_URL = "https://thenews-lhhv.onrender.com/api/";
+
+const axiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+});
+
 export const getAllUsers = () => {
   return axios
     .get(`https://thenews-lhhv.onrender.com/api/users`)
@@ -34,13 +40,14 @@ export const getArticlesById = (articleId) => {
 };
 
 export const getArticlesByTopic = (articleTopic) => {
-  return axios
-    .get(`https://thenews-lhhv.onrender.com/api/articles/?${articleTopic}`)
+  return axiosInstance
+    .get(`articles?topic=${articleTopic}`)
     .then((response) => {
       return response.data;
     })
     .catch((err) => {
-      return err;
+      console.log("topic query error >>>", err);
+      throw new Error("Failed to get articles by Topic...");
     });
 };
 
