@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { postMyComment } from "../utils/api";
+import { useUser } from "./UserContext";
 
 const PostComment = ({ article_id, handleCommentPosted }) => {
-  const [username, setUsername] = useState("happyamy2016");
+  const { selectedUser } = useUser();
   // change username to an non-existent one then try posting for error message
   const [commentBody, setCommentBody] = useState("");
   const [isPostingComment, setIsPostingComment] = useState(false);
@@ -13,13 +14,13 @@ const PostComment = ({ article_id, handleCommentPosted }) => {
     if (isPostingComment) return;
 
     const commentData = {
-      username: username,
+      username: selectedUser,
       body: commentBody,
     };
 
     const newComment = {
       comment_id: Date.now(), // optimistic purposes faked
-      author: username,
+      author: selectedUser,
       body: commentBody,
       created_at: new Date().toISOString(),
       votes: 0,

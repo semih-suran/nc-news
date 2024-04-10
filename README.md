@@ -1,8 +1,41 @@
-# React + Vite
+# README is currently in progress...
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> online web-page
+https://main--nc-news-by-semih.netlify.app/
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+----------------------------
+
+https://thenews-lhhv.onrender.com/api/users/cooljmessy/makeDefault
+
+http://localhost:8080/api/users/cooljmessy/makeDefault
+
+----------------------------
+
+# NC News
+
+A web application that uses ...
+
+## Tech Stack
+* React - Mobile First Responsive Development
+
+* [nc-news API](https://github.com/semih-suran/nc-news-be) - Backend of nc-news
+
+## Getting Started
+
+## Step 1: Install Dependencies
+
+```bash
+npm install
+```
+
+## Step 2: Start ...
+
+
+```bash
+npm run dev
+```
+
+## Step 3: Start your Application
+
+> **Note**: 

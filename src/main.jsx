@@ -1,14 +1,14 @@
-import React from "react";
+import "./styles/index.scss";import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import RootLayout from "./routes/RootLayout.jsx";
 import Home from "./routes/Home.jsx";
 import AllArticles from "./routes/AllArticles.jsx";
-import RootLayout from "./routes/RootLayout.jsx";
-import "./styles/index.scss";
-import Users from "./routes/Users.jsx";
-import PostComment from "./components/PostComment.jsx";
 import ArticleCard from "./routes/ArticleCard.jsx";
 import ArticlesByTopic from "./routes/ArticlesByTopic.jsx";
+import Users from "./routes/Users.jsx";
+import PostComment from "./components/PostComment.jsx";
+import { UserProvider } from "./components/UserContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +27,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
   </React.StrictMode>
 );

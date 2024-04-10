@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
 
 export const getAllUsers = () => {
   return axios
-    .get(`https://thenews-lhhv.onrender.com/api/users`)
+    .get(`${API_BASE_URL}users`)
     .then((response) => {
       return response.data;
     })
@@ -19,7 +19,7 @@ export const getAllUsers = () => {
 
 export const getAllArticles = () => {
   return axios
-    .get(`https://thenews-lhhv.onrender.com/api/articles`)
+    .get(`${API_BASE_URL}articles`)
     .then((response) => {
       return response.data;
     })
@@ -30,7 +30,7 @@ export const getAllArticles = () => {
 
 export const getArticlesById = (articleId) => {
   return axios
-    .get(`https://thenews-lhhv.onrender.com/api/articles/${articleId}`)
+    .get(`${API_BASE_URL}articles/${articleId}`)
     .then((response) => {
       return response.data;
     })
@@ -46,14 +46,13 @@ export const getArticlesByTopic = (articleTopic) => {
       return response.data;
     })
     .catch((err) => {
-      console.log("topic query error >>>", err);
       throw new Error("Failed to get articles by Topic...");
     });
 };
 
 export const getAllComments = () => {
   return axios
-    .get(`https://thenews-lhhv.onrender.com/api/comments`)
+    .get(`${API_BASE_URL}comments`)
     .then((response) => {
       return response.data;
     })
@@ -64,7 +63,7 @@ export const getAllComments = () => {
 
 export const getCommentsByArticleId = (articleId) => {
   return axios
-    .get(`https://thenews-lhhv.onrender.com/api/articles/${articleId}/comments`)
+    .get(`${API_BASE_URL}articles/${articleId}/comments`)
     .then((response) => {
       return response.data;
     })
@@ -75,7 +74,7 @@ export const getCommentsByArticleId = (articleId) => {
 
 export const updateArticleVotes = (articleId, voteValue) => {
   return axios
-    .patch(`https://thenews-lhhv.onrender.com/api/articles/${articleId}`, {
+    .patch(`${API_BASE_URL}articles/${articleId}`, {
       inc_votes: voteValue,
     })
     .then((response) => {
@@ -88,10 +87,7 @@ export const updateArticleVotes = (articleId, voteValue) => {
 
 export const postMyComment = (articleId, commentBody) => {
   return axios
-    .post(
-      `https://thenews-lhhv.onrender.com/api/articles/${articleId}/comments`,
-      commentBody
-    )
+    .post(`${API_BASE_URL}articles/${articleId}/comments`, commentBody)
     .then((response) => {
       return response.data;
     })
@@ -102,11 +98,22 @@ export const postMyComment = (articleId, commentBody) => {
 
 export const deleteCommentsById = (comment_id) => {
   return axios
-    .delete(`https://thenews-lhhv.onrender.com/api/comments/${comment_id}`)
+    .delete(`${API_BASE_URL}comments/${comment_id}`)
     .then((response) => {
       return response.data;
     })
     .catch((err) => {
       return err;
+    });
+};
+
+export const makeUserDefault = (username) => {
+  return axios
+    .patch(`${API_BASE_URL}users/${username}/makeDefault`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      throw err;
     });
 };

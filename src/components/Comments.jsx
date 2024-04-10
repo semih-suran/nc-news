@@ -1,32 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { getCommentsByArticleId } from "../utils/api";
+import { getCommentsByArticleId, getAllUsers } from "../utils/api";
 import { useParams } from "react-router-dom";
-import PostComment from "./PostComment"
+import PostComment from "./PostComment";
 import DeleteComment from "./DeleteComment";
+import { useUser } from "../components/UserContext";
 
 const Comments = () => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
+  const [avatarUrls, setAvatarUrls] = useState({});
+  const { selectedUser } = useUser();
+
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchComments = async () => {
+      try {
+        const commentsData = await getCommentsByArticleId(article_id);
+        setComments(commentsData);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error);
+        setIsLoading(false);
+      }
+    };
+    fetchComments();
+  }, [article_id]);
+
+  useEffect(() => {
+    const fetchAvatarUrls = async () => {
+      const allUsers = await getAllUsers();
+      const userAvatarUrls = {};
+      allUsers.users.forEach((user) => {
+        userAvatarUrls[user.username] = user.avatar_url;
+      });
+      setAvatarUrls(userAvatarUrls);
+    };
+    fetchAvatarUrls();
+  }, []);
+
   const handleCommentPosted = (newComment) => {
     setComments([newComment, ...comments]);
   };
-
-  useEffect(() => {
-    const fetchComment = () => {
-      getCommentsByArticleId(article_id)
-        .then((data) => {
-          setComments(data);
-          setIsLoading(false);
-        })
-        .catch((error) => {
-          setError(error);
-          setIsLoading(false);
-        });
-    };
-    fetchComment();
-  }, [article_id]);
 
   const handleDeleteComment = (deletedCommentId) => {
     setComments(comments.filter((comment) => comment.comment_id !== deletedCommentId));
@@ -41,12 +57,15 @@ const Comments = () => {
       ) : (
         <ul className="comments-for-article">
           <h2>Comments</h2>
-          <PostComment article_id={article_id} handleCommentPosted={handleCommentPosted} />
+          <PostComment
+            article_id={article_id}
+            handleCommentPosted={handleCommentPosted}
+          />
           {comments.length === 0 && <p>There are no comments yet...</p>}
           {comments.map((comment) => (
             <li className="each-comment" key={comment.comment_id}>
               <section className="user-in-comments">
-                <p>-- maybe -USER AVATAR- here --</p>
+                <img src={avatarUrls[comment.author]} alt="user avatar" />
                 <p>{comment.author}</p>
               </section>
               <p>{comment.body}</p>
@@ -55,7 +74,12 @@ const Comments = () => {
               <button>Vote 👍</button>
               <button>Vote 👎</button>
               <br />
-              <DeleteComment commentId={comment.comment_id} onDelete={handleDeleteComment} />
+              <DeleteComment
+                commentId={comment.comment_id}
+                commentAuthor={comment.author}
+                loggedInUser={selectedUser}
+                onDelete={handleDeleteComment}
+              />
             </li>
           ))}
         </ul>
