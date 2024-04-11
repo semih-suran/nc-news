@@ -10,6 +10,9 @@ const ArticlesByTopic = ({ topic }) => {
   useEffect(() => {
     if (topic) {
       fetchArticles(topic);
+    } else {
+      // Reset articles state when topic is null
+      setArticles([]);
     }
   }, [topic]);
 
@@ -35,24 +38,24 @@ const ArticlesByTopic = ({ topic }) => {
       </h2>
       {!topic && (
         <div className="topic-photos">
-          <Link to="/?topic=cooking">
-            Cooking Articles
+          <Link to="/?topic=cooking" className="topic-link">
+            <span className="topic-title">Cooking Articles</span>
             <img
               id="cooking-photo"
               src="https://img.jakpost.net/c/2018/06/27/2018_06_27_48298_1530062479._large.jpg"
               alt="a chopping board with some ingredients around it"
             />
           </Link>
-          <Link to="/?topic=coding">
-            Coding Articles
+          <Link to="/?topic=coding" className="topic-link">
+            <span className="topic-title">Coding Articles</span>
             <img
               id="coding-photo"
               src="https://techcrunch.com/wp-content/uploads/2015/04/codecode.jpg"
               alt="some complicated code on a screen"
             />
           </Link>
-          <Link to="/?topic=football">
-            Football Articles
+          <Link to="/?topic=football" className="topic-link">
+            <span className="topic-title">Football Articles</span>
             <img
               id="football-photo"
               src="https://cdn.britannica.com/51/190751-050-147B93F7/soccer-ball-goal.jpg"
@@ -68,16 +71,17 @@ const ArticlesByTopic = ({ topic }) => {
       <div className="articles-div">
         {articles.map((article) => (
           <Link to={`/articles/${article.article_id}`} key={article.article_id}>
-            <h4>{article.title}</h4>
-            <p>
-              An article by {article.author}. About: {article.topic}
-            </p>
-            <img
-              src={article.article_img_url}
-              alt="article image"
-              className="topic-article-img"
-            />
-            <p>{article.body}</p>
+            <div className="filtered-articles">
+              <h4>{article.title}</h4>
+              <p>
+                Article by {article.author}
+              </p>
+              <img
+                src={article.article_img_url}
+                alt="article image"
+                className="topic-article-img"
+              />
+            </div>
           </Link>
         ))}
       </div>

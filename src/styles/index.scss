@@ -1,7 +1,7 @@
 // Variables
 $primary-color: #007bff;
 $button-width: 360px;
-$button-height: 250px;
+$button-height: 300px;
 
 .NC {
   color: red;
@@ -70,6 +70,13 @@ body {
   padding-right: 10px;
 }
 
+.user-avatar{
+  max-width: 40px;
+  max-height: 40px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
 .nav-bar {
   position: fixed;
   top: 45px;
@@ -123,8 +130,37 @@ body {
   margin: 5px;
 }
 
+.filtered-articles {
+  width: $button-width;
+  height: $button-height;
+  background-color: #ffffff;
+  color: #000000;
+  border: black 2px solid;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+
+  a {
+    text-decoration: none;
+  }
+
+  h4 {
+    font-size: 18px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+  }
+}
+
 .articles-div {
   text-align: center;
+  text-decoration: none !important;
 
   button {
     width: $button-width;
@@ -156,10 +192,36 @@ body {
   }
 }
 
-.topic-article-img{
+.topic-article-img {
   max-width: 200px;
   max-height: 200px;
   border-radius: 8px;
+}
+
+.topic-link {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.topic-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.topic-link .topic-title {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-weight: bold;
+  font-size: 150%;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 #article-card {
@@ -212,7 +274,7 @@ body {
   background-color: #8a0000;
   border: 2px solid #000000;
   border-radius: 8px;
-
+  z-index: 9999;
   #cancel-button {
     align-items: center;
     justify-content: center;
@@ -312,7 +374,7 @@ body {
   margin-bottom: 10px;
   border-radius: 8px;
   img {
-width: 75px;
+    width: 75px;
   }
 }
 
@@ -321,7 +383,6 @@ width: 75px;
   align-items: center;
   text-align: center;
   justify-content: center;
-
 
   img {
     max-width: 300px;

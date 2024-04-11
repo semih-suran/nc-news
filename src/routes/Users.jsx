@@ -4,7 +4,7 @@ import { useUser } from "../components/UserContext";
 
 const Users = ({ onToggleUserList }) => {
   const [userData, setUserData] = useState([]);
-  const { setSelectedUser } = useUser();
+  const { setSelectedUser, setSelectedUserAvatar } = useUser(); // Add setSelectedUserAvatar
 
   useEffect(() => {
     getAllUsers()
@@ -16,18 +16,13 @@ const Users = ({ onToggleUserList }) => {
       });
   }, []);
 
-  const handleSetDefaultUser = (username) => {
-    makeUserDefault(username)
+  const handleSetDefaultUser = (user) => { // Modify handleSetDefaultUser to accept user object
+    makeUserDefault(user.username)
       .then(() => {
-        console.log(`>>> ${username} is now the default user.`);
-        setSelectedUser(username);
-        getAllUsers()
-          .then((result) => {
-            setUserData(result.users);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        console.log(`>>> ${user.username} is now the default user.`);
+        setSelectedUser(user.username);
+        setSelectedUserAvatar(user.avatar_url); // Update selectedUserAvatar
+        onToggleUserList(); // Move onToggleUserList here
       })
       .catch((error) => {
         console.error("Failed to set default user:", error);
@@ -40,10 +35,7 @@ const Users = ({ onToggleUserList }) => {
         <button
           key={index}
           className="user"
-          onClick={() => {
-            handleSetDefaultUser(user.username);
-            onToggleUserList();
-          }}
+          onClick={() => handleSetDefaultUser(user)} // Pass user object to handleSetDefaultUser
         >
           <h2>{user.username}</h2>
           <img src={user.avatar_url} alt="user avatar" />
