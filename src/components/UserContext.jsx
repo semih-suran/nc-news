@@ -5,6 +5,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedUserAvatar, setSelectedUserAvatar] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ export const UserProvider = ({ children }) => {
         const { users } = await getAllUsers();
         const defaultUser = users.find((user) => user.is_default) || users[0];
         setSelectedUser(defaultUser.username);
+        setSelectedUserAvatar(defaultUser.avatar_url)
       } catch (error) {
         console.error("Failed to fetch users", error);
       } finally {
@@ -28,7 +30,7 @@ export const UserProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ selectedUser, setSelectedUser }}>
+    <UserContext.Provider value={{ selectedUser, setSelectedUser, selectedUserAvatar, setSelectedUserAvatar }}>
       {children}
     </UserContext.Provider>
   );
