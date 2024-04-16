@@ -1,14 +1,10 @@
 # README is currently in progress...
 
-> online web-page
-https://main--nc-news-by-semih.netlify.app/
+> online netlify web-page
+https://main--nc-news-semih.netlify.app/
 
-
-----------------------------
-
-https://thenews-lhhv.onrender.com/api/users/cooljmessy/makeDefault
-
-http://localhost:8080/api/users/cooljmessy/makeDefault
+> onrender database
+https://thenews-lhhv.onrender.com/api/
 
 ----------------------------
 
