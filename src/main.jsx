@@ -1,4 +1,5 @@
-import "./styles/index.scss";import React from "react";
+import "./styles/index.scss";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./routes/RootLayout.jsx";
