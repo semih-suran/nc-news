@@ -6,114 +6,42 @@ const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
 });
 
-export const getAllUsers = () => {
-  return axios
-    .get(`${API_BASE_URL}users`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      return err;
+const fetchData = async (url, method = "GET", data = null) => {
+  try {
+    const response = await axiosInstance({
+      url,
+      method,
+      data,
     });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export const getAllArticles = () => {
-  return axios
-    .get(`${API_BASE_URL}articles`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
+export const getAllUsers = () => fetchData("users");
 
-export const getArticlesById = (articleId) => {
-  return axios
-    .get(`${API_BASE_URL}articles/${articleId}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
+export const getAllArticles = () => fetchData("articles");
 
-export const getArticlesByTopic = (articleTopic) => {
-  return axiosInstance
-    .get(`articles?topic=${articleTopic}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      throw new Error("Failed to get articles by Topic...");
-    });
-};
+export const getArticlesById = (articleId) =>
+  fetchData(`articles/${articleId}`);
 
-export const getAllComments = () => {
-  return axios
-    .get(`${API_BASE_URL}comments`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
+export const getArticlesByTopic = (articleTopic) =>
+  fetchData(`articles?topic=${articleTopic}`);
 
-export const getCommentsByArticleId = (articleId) => {
-  return axios
-    .get(`${API_BASE_URL}articles/${articleId}/comments`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
+export const getAllComments = () => fetchData("comments");
 
-export const updateArticleVotes = (articleId, voteValue) => {
-  return axios
-    .patch(`${API_BASE_URL}articles/${articleId}`, {
-      inc_votes: voteValue,
-    })
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      throw err;
-    });
-};
+export const getCommentsByArticleId = (articleId) =>
+  fetchData(`articles/${articleId}/comments`);
 
-export const postMyComment = (articleId, commentBody) => {
-  return axios
-    .post(`${API_BASE_URL}articles/${articleId}/comments`, commentBody)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      throw err;
-    });
-};
+export const updateArticleVotes = (articleId, voteValue) =>
+  fetchData(`articles/${articleId}`, "PATCH", { inc_votes: voteValue });
 
-export const deleteCommentsById = (comment_id) => {
-  return axios
-    .delete(`${API_BASE_URL}comments/${comment_id}`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      return err;
-    });
-};
+export const postMyComment = (articleId, commentBody) =>
+  fetchData(`articles/${articleId}/comments`, "POST", commentBody);
 
-export const makeUserDefault = (username) => {
-  return axios
-    .patch(`${API_BASE_URL}users/${username}/makeDefault`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      throw err;
-    });
-};
+export const deleteCommentsById = (comment_id) =>
+  fetchData(`comments/${comment_id}`, "DELETE");
+
+export const makeUserDefault = (username) =>
+  fetchData(`users/${username}/makeDefault`, "PATCH");
