@@ -1,7 +1,7 @@
 # README is currently in progress...
 
 > Live netlify web-page
-https://main--nc-news-semih.netlify.app/
+https://nc-news-semih.netlify.app/
 
 > Live onrender database
 https://thenews-lhhv.onrender.com/api/
