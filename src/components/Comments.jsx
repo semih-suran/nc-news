@@ -45,7 +45,9 @@ const Comments = () => {
   };
 
   const handleDeleteComment = (deletedCommentId) => {
-    setComments(comments.filter((comment) => comment.comment_id !== deletedCommentId));
+    setComments(
+      comments.filter((comment) => comment.comment_id !== deletedCommentId)
+    );
   };
 
   return (
@@ -70,9 +72,9 @@ const Comments = () => {
               </section>
               <p>{comment.body}</p>
               <p>{comment.created_at}</p>
-              <p>Votes: {comment.votes}</p>
+              {/* <p>Votes: {comment.votes}</p>
               <button>Vote 👍</button>
-              <button>Vote 👎</button>
+              <button>Vote 👎</button> */}
               <br />
               <DeleteComment
                 commentId={comment.comment_id}
