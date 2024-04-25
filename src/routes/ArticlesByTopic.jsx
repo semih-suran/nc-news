@@ -33,7 +33,7 @@ const ArticlesByTopic = ({ topic }) => {
   return (
     <>
       <h2 className="home-title">
-        Welcome to <span className="NC">{topic || "NC"}</span> Articles
+        Welcome to <span className="NC">{topic || "NC"}</span> articles
       </h2>
       {!topic && (
         <div className="topic-photos">
@@ -76,7 +76,7 @@ const ArticlesByTopic = ({ topic }) => {
               <img
                 src={article.article_img_url}
                 alt="article image"
-                className="topic-article-img"
+                id="topic-article-img"
               />
             </div>
           </Link>

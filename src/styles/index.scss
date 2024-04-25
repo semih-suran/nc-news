@@ -7,10 +7,6 @@ a {
   text-decoration: none;
 }
 
-.NC {
-  color: red;
-}
-
 li {
   list-style: none;
   font-family: "Poppins", sans-serif;
@@ -24,6 +20,7 @@ button {
 
 #root {
   min-width: 300px;
+  background-color: #f0f0f0;
 }
 
 body {
@@ -32,7 +29,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d1e7fd;
+  background-color: #e7e7e7;
   font-family: "Poppins", sans-serif;
 }
 
@@ -51,7 +48,25 @@ body {
 }
 
 .nc-news-header {
+  margin: 5px;
+  margin-left: 10px;
   width: 205px;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+#head-N {
+  padding: 3px;
+  background-color: red;
+  color: white;
+}
+
+#head-C {
+  margin-left: 1px;
+  padding: 3px;
+  background-color: black;
+  color: white;
 }
 
 .header button {
@@ -164,7 +179,7 @@ body {
 .each-article-in-list:hover,
 .each-article-in-list:active {
   transition: background-color 0.4s ease;
-  background-color: #000d70;
+  background-color: black;
   color: white;
 }
 
@@ -178,17 +193,12 @@ body {
   cursor: pointer;
   margin-bottom: 10px;
   text-decoration: none;
-
-  img {
-    max-width: 200px;
-    max-height: 200px;
-  }
 }
 
 .filtered-articles:hover,
 .filtered-articles:active {
   transition: background-color 0.4s ease;
-  background-color: #000d70;
+  background-color: black;
   color: white;
 }
 
@@ -222,12 +232,12 @@ body {
   }
   img {
     width: 90%;
+    max-width: 900px;
   }
 }
 
-.topic-article-img {
-  max-width: 200px;
-  max-height: 200px;
+#topic-article-img {
+  max-width: 240px;
   border-radius: 8px;
 }
 
@@ -305,7 +315,7 @@ body {
   transform: translate(-50%, -50%) scale(1.5);
   margin: 0;
   padding: 10px;
-  background-color: $primary-color;
+  background-color: black;
   border: 2px solid #000000;
   border-radius: 8px;
   z-index: 9999;
@@ -332,7 +342,7 @@ body {
 
     &:hover {
       transition: background-color 0.4s ease;
-      background-color: #000d70;
+      background-color: red;
       color: white;
     }
   }
@@ -351,10 +361,10 @@ body {
   margin: 10px;
   width: 50%;
   padding: 10px;
-  border: 2px solid #000000;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   font-size: 18px;
-  color: #333;
+  color: #ffffff;
   background-color: transparent;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -374,23 +384,27 @@ body {
 }
 
 .comments-for-article {
+  color: white;
   margin-top: 20px;
   padding: 20px;
-  border-top: 1px solid #ccc;
-  background-color: #fffba8;
-  background: linear-gradient(to bottom right, #fffba8, #c6bc03);
+  background-color: #151515;
   button {
-    width: 75px;
-    height: 40px;
-    background-color: #000000;
-    color: #ffffff;
-    text-decoration: none;
+    max-height: 40px;
+    margin: 10px;
     border-radius: 8px;
-    padding: 3px;
-    margin: 5px;
+    background-color: black;
+    color: white;
+    border: 2px solid rgb(255, 255, 255);
     &:hover {
-      box-shadow: 0 0 10px 3px rgb(0, 0, 0);
+      border: 2px solid rgb(0, 0, 0);
+      transition: background-color 0.4s ease;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      box-shadow: 0 0 10px 3px white;
     }
+  }
+  h2 {
+    color: rgb(255, 255, 255);
   }
 }
 
@@ -402,22 +416,23 @@ body {
     color: white;
   }
 }
-.user-in-comments {
-  border: #000000 3px solid;
-  border-radius: 8px;
-  margin: 5px;
-  background-color: $primary-color;
-}
 
 #add-comment {
-  width: 220px;
+  width: 240px;
   font-size: 20px;
+  max-height: 40px;
 }
 
 #delete-comment {
   width: 200px;
+  color: red;
+  border: 2px solid red;
   background-color: #000000;
   &:hover {
+    border: 2px solid white;
+    transition: background-color 0.4s ease;
+    background-color: red;
+    color: rgb(0, 0, 0);
     box-shadow: 0 0 10px 3px red;
   }
 }
@@ -425,7 +440,7 @@ body {
 .each-comment {
   border: #000000 2px solid;
   margin-bottom: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px white;
   display: flex;
   align-items: center;
 }

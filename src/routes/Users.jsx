@@ -48,7 +48,7 @@ const Users = ({ onToggleUserList }) => {
           className="user"
           onClick={() => handleSetDefaultUser(user)}
         >
-          <h2>{user.username}</h2>
+          <h2>{user.name}</h2>
           <img src={user.avatar_url} alt="user avatar" />
         </button>
       ))}
