@@ -66,22 +66,23 @@ const Comments = () => {
           {comments.length === 0 && <p>There are no comments yet...</p>}
           {comments.map((comment) => (
             <li className="each-comment" key={comment.comment_id}>
-              <section className="user-in-comments">
+              <div className="user-info">
                 <img src={avatarUrls[comment.author]} alt="user avatar" />
-                <p>{comment.author}</p>
-              </section>
-              <p>{comment.body}</p>
-              <p>{comment.created_at}</p>
-              {/* <p>Votes: {comment.votes}</p>
-              <button>Vote 👍</button>
-              <button>Vote 👎</button> */}
-              <br />
-              <DeleteComment
-                commentId={comment.comment_id}
-                commentAuthor={comment.author}
-                loggedInUser={selectedUser}
-                onDelete={handleDeleteComment}
-              />
+              </div>
+              <div className="comment-text">
+                <p className="comment-author">{comment.author}</p>
+                <p>{comment.body}</p>
+                <p className="time-stamp">
+                  Posted on: {comment.created_at.substring(0, 10)} at{" "}
+                  {comment.created_at.substring(11, 19)}
+                </p>
+                {selectedUser === comment.author && (
+                  <DeleteComment
+                    commentId={comment.comment_id}
+                    onDelete={handleDeleteComment}
+                  />
+                )}
+              </div>
             </li>
           ))}
         </ul>

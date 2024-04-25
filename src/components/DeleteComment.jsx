@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { deleteCommentsById } from "../utils/api";
 
-const DeleteComment = ({ commentId, commentAuthor, loggedInUser, onDelete }) => {
+const DeleteComment = ({
+  commentId,
+  commentAuthor,
+  loggedInUser,
+  onDelete,
+}) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = () => {
@@ -28,7 +33,7 @@ const DeleteComment = ({ commentId, commentAuthor, loggedInUser, onDelete }) => 
             <p>Deleting...</p>
           ) : (
             <button id="delete-comment" onClick={handleDelete}>
-              🚫 Delete Comment 🚫
+              🚫 Delete My Comment 🚫
             </button>
           )}
         </>

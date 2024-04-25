@@ -31,7 +31,6 @@ const Users = ({ onToggleUserList }) => {
   const handleSetDefaultUser = (user) => {
     makeUserDefault(user.username)
       .then(() => {
-        console.log(`>>> ${user.username} is now the default user.`);
         setSelectedUser(user.username);
         setSelectedUserAvatar(user.avatar_url);
         onToggleUserList();

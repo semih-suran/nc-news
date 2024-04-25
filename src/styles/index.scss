@@ -3,6 +3,10 @@ $primary-color: #007bff;
 $button-width: 360px;
 $button-height: 300px;
 
+a {
+  text-decoration: none;
+}
+
 .NC {
   color: red;
 }
@@ -70,7 +74,7 @@ body {
   padding-right: 10px;
 }
 
-.user-avatar{
+.user-avatar {
   max-width: 40px;
   max-height: 40px;
   padding-right: 30px;
@@ -86,26 +90,46 @@ body {
   color: #000000;
   display: flex;
   align-items: center;
-  // justify-content: space-between;
   z-index: 1000;
   margin-top: 10px;
   padding: 0;
 }
 
 .nav-bar a:hover {
-  box-shadow: 0 0 10px 3px rgb(0, 0, 0);
+  transition: background-color 0.4s ease;
+  background-color: #000000;
+  color: white;
 }
 
 .nav-bar a {
   background-color: #ffffff;
   color: #000000;
-  border: #000000 1px solid;
   text-decoration: none;
-  border-radius: 8px;
   padding: 3px;
   margin: 5px;
   margin-right: 20px;
   margin-left: 20px;
+  position: relative;
+}
+
+.nav-bar a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
+  transition: background-color 0.4s ease;
+}
+
+.nav-bar a:focus:after,
+.nav-bar a:active:after {
+  background-color: red;
+}
+.nav-bar a.active {
+  text-decoration: underline;
+  color: red;
 }
 
 .nav-bar p {
@@ -124,6 +148,7 @@ body {
   }
   img {
     max-width: 240px;
+    border-radius: 8px;
   }
 }
 
@@ -133,47 +158,53 @@ body {
 
 #each-article {
   margin: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.each-article-in-list:hover,
+.each-article-in-list:active {
+  transition: background-color 0.4s ease;
+  background-color: #000d70;
+  color: white;
 }
 
 .filtered-articles {
   width: $button-width;
   height: $button-height;
+  margin: 5px;
   background-color: #ffffff;
   color: #000000;
-  border: black 2px solid;
-  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   margin-bottom: 10px;
-
-  a {
-    text-decoration: none;
-  }
-
-  h4 {
-    font-size: 18px;
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  text-decoration: none;
 
   img {
     max-width: 200px;
     max-height: 200px;
-    border-radius: 8px;
   }
+}
+
+.filtered-articles:hover,
+.filtered-articles:active {
+  transition: background-color 0.4s ease;
+  background-color: #000d70;
+  color: white;
 }
 
 .articles-div {
   text-align: center;
-  text-decoration: none !important;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   button {
     width: $button-width;
     height: $button-height;
     background-color: #ffffff;
     color: #000000;
-    border: 2px solid;
-    border-radius: 8px;
+    border: none;
+    border-radius: 0px;
     cursor: pointer;
   }
 
@@ -189,11 +220,8 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
   img {
-    max-width: 200px;
-    max-height: 200px;
-    border-radius: 8px;
+    width: 90%;
   }
 }
 
@@ -230,6 +258,7 @@ body {
 }
 
 #article-card {
+  display: block;
   padding-top: 120px;
   margin-left: 5px;
   margin-right: 5px;
@@ -276,15 +305,21 @@ body {
   transform: translate(-50%, -50%) scale(1.5);
   margin: 0;
   padding: 10px;
-  background-color: #b8ebff;
+  background-color: $primary-color;
   border: 2px solid #000000;
   border-radius: 8px;
   z-index: 9999;
+
   #cancel-button {
     align-items: center;
     justify-content: center;
     font-size: large;
     color: red;
+    &:hover {
+      transition: background-color 0.4s ease;
+      background-color: red;
+      color: white;
+    }
   }
 
   button {
@@ -296,7 +331,9 @@ body {
     border-radius: 8px;
 
     &:hover {
-      box-shadow: 0 0 10px 3px rgb(255, 255, 255);
+      transition: background-color 0.4s ease;
+      background-color: #000d70;
+      color: white;
     }
   }
 }
@@ -311,6 +348,7 @@ body {
   width: 100px;
 }
 #new-comment {
+  margin: 10px;
   width: 50%;
   padding: 10px;
   border: 2px solid #000000;
@@ -323,7 +361,7 @@ body {
 
 #new-comment:focus {
   outline: none;
-  border-color: rgb(30, 200, 50);
+  border-color: $primary-color;
   box-shadow: 0 0 10px 3px rgb(0, 0, 0);
 }
 
@@ -356,10 +394,19 @@ body {
   }
 }
 
+.current-user {
+  margin: 5px;
+  &:hover {
+    transition: background-color 0.4s ease;
+    background-color: black;
+    color: white;
+  }
+}
 .user-in-comments {
-  border: #000000 2px solid;
+  border: #000000 3px solid;
   border-radius: 8px;
-  margin: 3px;
+  margin: 5px;
+  background-color: $primary-color;
 }
 
 #add-comment {
@@ -368,19 +415,52 @@ body {
 }
 
 #delete-comment {
-  width: 180px;
+  width: 200px;
   background-color: #000000;
   &:hover {
     box-shadow: 0 0 10px 3px red;
   }
 }
+
 .each-comment {
   border: #000000 2px solid;
   margin-bottom: 10px;
-  border-radius: 8px;
-  img {
-    width: 75px;
-  }
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 3px;
+}
+
+.user-info img {
+  width: 75px;
+  margin-right: 10px;
+}
+
+.user-info div {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-text {
+  flex-grow: 1;
+}
+
+.comment-text p {
+  margin: 0;
+}
+
+.comment-author {
+  font-weight: bold;
+}
+
+.time-stamp {
+  font-size: 15px;
 }
 
 .topic-photos {
@@ -394,6 +474,9 @@ body {
     height: auto;
     display: block;
     border-radius: 8%;
+    &:hover {
+      box-shadow: 0 0 10px 3px #000000;
+    }
   }
 
   button {
