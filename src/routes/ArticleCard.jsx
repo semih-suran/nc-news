@@ -108,7 +108,8 @@ const ArticleCard = ({ handleArticlesClick }) => {
             Vote 👎
           </button>
           <p>Article ID: {article.article_id}</p>
-          <p>Created At: {article.created_at}</p>
+          <p>Posted On: {article.created_at.substring(0, 10)} at{" "}
+                  {article.created_at.substring(11, 19)}</p>
           <p>{article.comment_count} Comments</p>
           <Comments />
         </>
