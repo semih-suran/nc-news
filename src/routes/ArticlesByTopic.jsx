@@ -11,7 +11,6 @@ const ArticlesByTopic = ({ topic }) => {
     if (topic) {
       fetchArticles(topic);
     } else {
-      // Reset articles state when topic is null
       setArticles([]);
     }
   }, [topic]);
@@ -34,7 +33,7 @@ const ArticlesByTopic = ({ topic }) => {
   return (
     <>
       <h2 className="home-title">
-        Welcome to <span className="NC">NC</span> News
+        Welcome to <span className="NC">{topic || "NC"}</span> Articles
       </h2>
       {!topic && (
         <div className="topic-photos">
@@ -72,10 +71,8 @@ const ArticlesByTopic = ({ topic }) => {
         {articles.map((article) => (
           <Link to={`/articles/${article.article_id}`} key={article.article_id}>
             <div className="filtered-articles">
-              <h4>{article.title}</h4>
-              <p>
-                Article by {article.author}
-              </p>
+              <h3>{article.title}</h3>
+              <p>Article by {article.author}</p>
               <img
                 src={article.article_img_url}
                 alt="article image"
