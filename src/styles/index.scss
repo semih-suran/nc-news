@@ -108,6 +108,11 @@ body {
   margin-left: 20px;
 }
 
+.nav-bar p {
+  margin-left: auto;
+  cursor: pointer;
+}
+
 #allArticlesList {
   padding: 0;
   display: flex;
@@ -271,7 +276,7 @@ body {
   transform: translate(-50%, -50%) scale(1.5);
   margin: 0;
   padding: 10px;
-  background-color: #8a0000;
+  background-color: #b8ebff;
   border: 2px solid #000000;
   border-radius: 8px;
   z-index: 9999;

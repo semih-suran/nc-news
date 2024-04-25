@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getAllUsers, makeUserDefault } from "../utils/api";
 import { useUser } from "../components/UserContext";
 
 const Users = ({ onToggleUserList }) => {
   const [userData, setUserData] = useState([]);
-  const { setSelectedUser, setSelectedUserAvatar } = useUser(); 
+  const { setSelectedUser, setSelectedUserAvatar } = useUser();
+  const userListRef = useRef(null);
 
   useEffect(() => {
     getAllUsers()
@@ -14,7 +15,18 @@ const Users = ({ onToggleUserList }) => {
       .catch((error) => {
         console.error(error);
       });
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
+
+  const handleClickOutside = (event) => {
+    if (userListRef.current && !userListRef.current.contains(event.target)) {
+      onToggleUserList();
+    }
+  };
 
   const handleSetDefaultUser = (user) => {
     makeUserDefault(user.username)
@@ -30,7 +42,7 @@ const Users = ({ onToggleUserList }) => {
   };
 
   return (
-    <ul className="users">
+    <ul className="users" ref={userListRef}>
       {userData.map((user, index) => (
         <button
           key={index}
@@ -47,4 +59,5 @@ const Users = ({ onToggleUserList }) => {
     </ul>
   );
 };
+
 export default Users;
