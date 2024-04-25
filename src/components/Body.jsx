@@ -48,6 +48,7 @@ function Body() {
       <NavBar
         handleHomeClick={handleHomeClick}
         handleArticlesClick={handleArticlesClick}
+        onToggleUserList={toggleUserList}
         showArticles={showArticles}
         isHomeImagesVisible={isHomeImagesVisible}
         selectedArticle={selectedArticle}
