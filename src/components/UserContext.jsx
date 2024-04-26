@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
         const { users } = await getAllUsers();
         const defaultUser = users.find((user) => user.is_default) || users[0];
         setSelectedUser(defaultUser.username);
-        setSelectedUserAvatar(defaultUser.avatar_url)
+        setSelectedUserAvatar(defaultUser.avatar_url);
       } catch (error) {
         console.error("Failed to fetch users", error);
       } finally {
@@ -26,11 +26,18 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div className="loading">Server is currently waking from hibernation....</div>;
+    return <div className="loading">Waking up from hibernation...</div>;
   }
 
   return (
-    <UserContext.Provider value={{ selectedUser, setSelectedUser, selectedUserAvatar, setSelectedUserAvatar }}>
+    <UserContext.Provider
+      value={{
+        selectedUser,
+        setSelectedUser,
+        selectedUserAvatar,
+        setSelectedUserAvatar,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
