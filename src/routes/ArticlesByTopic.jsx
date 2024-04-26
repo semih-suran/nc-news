@@ -64,7 +64,7 @@ const ArticlesByTopic = ({ topic }) => {
         </div>
       )}
 
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <p className="loading">Loading...</p>}
       {error && <p>Error: {error.message}</p>}
 
       <div className="articles-div">

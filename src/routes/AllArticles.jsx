@@ -39,7 +39,7 @@ const AllArticles = () => {
         <>
           <h2>Click on desired article for details</h2>
           {isLoading ? (
-            <p>Loading...</p>
+            <p className="loading">Loading...</p>
           ) : error ? (
             <p>Error: {error.message}</p>
           ) : (

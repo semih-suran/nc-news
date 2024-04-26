@@ -53,7 +53,7 @@ const Comments = () => {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : (
