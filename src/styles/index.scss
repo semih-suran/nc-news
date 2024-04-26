@@ -56,6 +56,27 @@ body {
   color: black;
 }
 
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #000000, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #000000, 0 0 60px #000000, 0 0 70px #000000, 0 0 80px #000000, 0 0 90px #000000;
+  }
+  to {
+    text-shadow: 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000, 0 0 50px #000000, 0 0 60px #000000, 0 0 70px #000000, 0 0 80px #000000, 0 0 90px #000000, 0 0 100px #000000;
+  }
+}
+
 #head-N {
   padding: 3px;
   background-color: red;
